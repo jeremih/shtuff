@@ -1,0 +1,23 @@
+#ifndef FOLDER_H
+#define FOLDER_H
+#include <set>
+#include "Message.h"
+
+class Folder
+{
+	friend class Message;
+public:
+	Folder() {}
+	Folder(const Folder&);
+	Folder& operator= (const Folder&);
+	~Folder();
+	
+	void addMsg(Message*);
+	void remMsg(Message*);
+private:
+	std::set<Message*> messages;
+
+	void remove_messages();
+	void add_messages(const Folder&);
+};
+#endif
